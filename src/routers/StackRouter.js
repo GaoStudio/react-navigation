@@ -33,6 +33,7 @@ function isResetToRootStack(action) {
 
 export default (routeConfigs, stackConfig = {}) => {
   // Fail fast on invalid route definitions
+  // 验证路由
   validateRouteConfigMap(routeConfigs);
 
   const childRouters = {};
@@ -43,6 +44,7 @@ export default (routeConfigs, stackConfig = {}) => {
     const screen = getScreenForRouteName(routeConfigs, routeName);
     if (screen && screen.router) {
       // If it has a router it's a navigator.
+      //标记子路由
       childRouters[routeName] = screen.router;
     } else {
       // If it doesn't have router it's an ordinary React component.
